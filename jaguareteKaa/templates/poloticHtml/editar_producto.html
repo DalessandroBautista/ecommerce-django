@@ -1,0 +1,50 @@
+{% extends "poloticHtml/layout.html" %}
+
+{% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col">
+        <form action="" method="post" enctype=multipart/form-data>
+            {% csrf_token %}
+            <table>
+            <div class="row form-group">
+                <img class="card-img-top" style= "width: 25%; ;"src={{ producto.image.url }} alt="..." />
+                <div> {{ producto_form.image.label }}</div>
+                <div> {{ producto_form.image }}</div>
+            </div>
+           
+        </table>
+    </div>
+    <div class="col">
+            <table>
+                <div class="row form-group">
+                    <div> {{ producto_form.nombre.label }}</div>
+                    <div> {{ producto_form.nombre }}</div>
+                </div>
+                <div class="row form-group">
+                    <div> {{ producto_form.precio.label }}</div>
+                    <div> {{ producto_form.precio }}</div>
+                </div>
+                <div class="row form-group">
+                    <div> {{ producto_form.categoria.label }}</div>
+                    <div> {{ producto_form.categoria }}</div>
+                </div>
+                <div class="row form-group">
+                    <div> {{ producto_form.description.label }}</div>
+                    <div> {{ producto_form.description }}</div>
+                </div>
+                <div class="row form-group">
+                    <input  class="btn btn-outline-success"  type="submit" value="Editar" style="width: 150px;">
+                    <a   style="width: 150px;" href="{% url 'eliminar_producto' producto.id %}" class="btn btn-outline-success">Borrar</a>
+                    <!-- <button class="btn btn-outline-success" type="submit" style=" width: 150px;" href="{% url 'producto' producto.id %}">Borrar</button> !-->
+                </div>
+            </table>
+        </form>
+    </div>
+        
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

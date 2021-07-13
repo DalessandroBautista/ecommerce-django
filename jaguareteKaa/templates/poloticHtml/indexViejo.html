@@ -1,0 +1,52 @@
+
+
+<div class="products">
+    <div class="container-md">
+        <ul>
+
+            {% for un_producto in lista_productosImagen %}
+            <li>
+                <!-- <div class="product">
+                    <div class="content">
+                        
+                        <IMG src={{ un_producto.image }} border=0 width=100 height=100>
+                        <p style="font-size: 20px">{{ un_producto.nombre }}</p>
+                        <p>{{ un_producto.description }}.</p>
+                        <a href={{ link }} class="main_button"> Ver producto</a>
+                    </div>
+                </div> -->
+                <div class="card"  style="width: 18rem;">
+                    <img class="card-img-top" src={{ un_producto.image }} alt="Card image cap"  border=0 width=100 height=100>
+                    <div class="card-body">
+                      <h5 class="card-title">{{ un_producto.nombre }}</h5>
+                      <p class="card-text">{{ un_producto.description }}</p>
+                      <a href="{{ link }}" class="btn btn-primary">Ver producto</a>
+                    </div>
+                  </div>
+            </li>
+    
+            
+            {% endfor  %}
+        </ul> 
+    </div>
+   
+    
+   
+</div>
+<div class="moreProducts">
+    <p class="title_moreProducts"> Más Productos </p>
+    <div class="more_products">                
+        <ul>
+            <!-- <li><a href={{ link }}>{{ nombre4 }}: {{ description }}</a></li>
+            <li><a href={{ link }}>{{ nombre5 }}: {{ description }}</a></li>
+            <li><a href={{ link }}>{{ nombre6 }}: {{ description }}</a></li>
+            <li><a href={{ link }}>{{ nombre7 }}: {{ description }}</a></li>
+            <li><a href={{ link }}>{{ nombre8 }}: {{ description }}</a></li> -->
+            {% for un_producto in lista_productosSinImagen %}
+                <li><a href={{ un_producto.image }}>{{ un_producto.nombre }}: {{ un_producto.descripction }}</a></li>
+            {% endfor  %}
+        </ul>
+    </div>
+</div>
+   
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "poloticHtml/layout.html" %}
+
+{% block body %}
+<div class="contact-form" style="margin:auto; width: 50%;">
+    {% if "ok" in request.GET%}
+        <h1> ¡Gracias por enviar la información!</h1>
+        <p> ¡En las próximas 48 horas recibirás una respuesta por parte de nuestro equipo!</p>
+    {% endif%}
+    <h1> Contáctanos</h1>
+    {% if form.errors%}
+    <p style="color: red;"> Revisa este campo</p>
+    {% endif%}
+    <form action= "" method="POST"> {% csrf_token%}
+        <table>
+            {{form.as_table}}
+        </table>
+        <input type="submit" value="Enviar" style=" margin-left: 25%; width: 150px;">
+    </form>
+</div>
+
+{% endblock %}

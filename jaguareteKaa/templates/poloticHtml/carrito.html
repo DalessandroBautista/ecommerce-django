@@ -1,0 +1,32 @@
+{% extends "poloticHtml/layout.html" %}
+
+{% block body %}
+
+
+   {% if request.session.carro.items %}
+   <h1>Carrito: ${{importe_total_carro}}</h1>
+   <div class="text-center"><a class="btn btn-outline-dark mt-auto btn-outline-success" href="{% url 'limpiar'  %}">Vaciar carrito</a></div>
+        {% for key, value in request.session.carro.items %}
+        <div class="list-group">
+            <div style="width: 40; margin-left: 0%; background-color: #212529; color:snow ">
+                    <img  href="{% url 'producto' value.producto_id %}" style= "width: 10%;"class="card-img-top" src={{ value.imagen }} alt="..." />
+                    <h4 href="{% url 'producto' value.producto_id %}"  class="list-group-item-heading">{{ value.nombre }}</h4>
+                    <p class="list-group-item-text">{{ value.descripction }}</p>
+                    <td>
+                        <p> {{ value.cantidad}}</p>
+                        <p> Total de este producto:${{value.precio}}</p>
+                        <a style="color:snow; border-color: white;" href="{% url 'agregar' value.producto_id %}" class="btn btn-outline-dark mt-auto btn-outline-success">Agregar una unidad</a>
+                        <a style="color:snow;border-color: white;" href="{% url 'restar' value.producto_id %}" class="btn btn-outline-dark mt-auto btn-outline-success">Eliminar una unidad</a>
+                        <a style="color:snow;border-color: white;" href="{% url 'eliminar' value.producto_id %}" class="btn btn-outline-dark mt-auto btn-outline-success">Eliminar todos</a>
+                    </td>
+                    
+            </div>
+            
+          </div>
+          <hr/>
+        {% endfor %}
+    {% else %}
+        <div class="alert alerd-danger text-center " style="font-size:35px;"> Sin productos en el carro </div>
+    {% endif %}
+
+{% endblock %}

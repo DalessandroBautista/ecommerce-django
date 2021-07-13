@@ -1,0 +1,19 @@
+{% extends "poloticHtml/layout.html" %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <img class="card-img-top" src={{ producto.image.url }} alt="..." />
+      </div>
+      <div class="col">
+        <h5 class="fw-bolder">{{ producto.nombre }}</h5>
+            <!-- Product price-->
+            <b> ${{ producto.precio }} </b> 
+            <p class="card-text">{{ producto.description }}</p>
+            <div class="text-center"><a class="btn btn-outline-dark mt-auto btn-outline-success" href="{% url 'comprar' producto.id %}">Comprar</a></div>
+      </div>
+    </div>
+
+</div>
+{% endblock %}
